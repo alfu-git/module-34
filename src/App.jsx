@@ -3,6 +3,8 @@ import './App.css'
 import MyNav from './Components/MyNav/MyNav'
 import PricingList from './Components/PricingList/PricingList';
 import Chart from './Components/Chart/Chart';
+import axios from 'axios';
+import MarksChart from './Components/Chart/MarksChart';
 
 const navItems = [
   {
@@ -33,6 +35,7 @@ const navItems = [
 ];
 
 const pricingDataPromise = fetch('PricingData.json').then(res => res.json());
+const marksPromise = axios.get('MarksData.json');
 
 function App() {
 
@@ -58,6 +61,17 @@ function App() {
 
         <section className='mt-15  container mx-auto px-5'>
           <Chart></Chart>
+        </section>
+
+        <section className='mt-15  container mx-auto px-5'>
+          <Suspense fallback={
+            <div className='mt-8 flex justify-center items-center'>
+              <span className="loading loading-spinner text-primary"></span>
+            </div>
+            }
+          >
+            <MarksChart marksPromise={marksPromise}></MarksChart>
+          </Suspense>
         </section>
       </main>
     </>

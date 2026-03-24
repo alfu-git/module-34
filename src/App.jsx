@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import './App.css'
 import MyNav from './Components/MyNav/MyNav'
+import PricingList from './Components/PricingList/PricingList';
 
 const navItems = [
   {
@@ -29,6 +31,8 @@ const navItems = [
   },
 ];
 
+const pricingDataPromise = fetch('PricingData.json').then(res => res.json());
+
 function App() {
 
   return (
@@ -37,6 +41,20 @@ function App() {
       <header>
         <MyNav navItems={navItems}></MyNav>
       </header>
+
+      <main>
+        <section className='mt-10  container mx-auto px-5'>
+          <Suspense 
+          fallback={
+            <div className='mt-8 flex justify-center items-center'>
+              <span className="loading loading-spinner text-primary"></span>
+            </div>
+          }
+        >
+          <PricingList pricingDataPromise={pricingDataPromise}></PricingList>
+          </Suspense>
+        </section>
+      </main>
     </>
   )
 }

@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import './App.css'
 import MyNav from './Components/MyNav/MyNav'
 import PricingList from './Components/PricingList/PricingList';
+import Chart from './Components/Chart/Chart';
 
 const navItems = [
   {
@@ -43,7 +44,7 @@ function App() {
       </header>
 
       <main>
-        <section className='mt-10  container mx-auto px-5'>
+        <section className='mt-15  container mx-auto px-5'>
           <Suspense 
           fallback={
             <div className='mt-8 flex justify-center items-center'>
@@ -53,6 +54,10 @@ function App() {
         >
           <PricingList pricingDataPromise={pricingDataPromise}></PricingList>
           </Suspense>
+        </section>
+
+        <section className='mt-15  container mx-auto px-5'>
+          <Chart></Chart>
         </section>
       </main>
     </>

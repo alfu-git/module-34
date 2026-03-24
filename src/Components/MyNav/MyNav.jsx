@@ -48,7 +48,7 @@ const MyNav = ({ navItems }) => {
 
           <button className="btn btn-ghost">
             <h1 className="text-base-100 hover:text-neutral-700 text-3xl font-semibold ">
-              My NavBar
+              Gym Arena
             </h1>
           </button>
         </div>
